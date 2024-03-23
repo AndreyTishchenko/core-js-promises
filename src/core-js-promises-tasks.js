@@ -40,7 +40,7 @@ function getPromise(number) {
  * Promise.resolve('success') => promise that will be fulfilled with 'success' value
  * Promise.reject('fail')     => promise that will be fulfilled with 'fail' value
  */
-function getPromiseResult( source ) {
+function getPromiseResult(source) {
   return new Promise((resolve) => {
     source.then(() => resolve('success')).catch(() => resolve('fail'));
   });
@@ -60,7 +60,7 @@ function getPromiseResult( source ) {
  * [Promise.reject(1), Promise.reject(2), Promise.reject(3)]    => Promise rejected
  */
 function getFirstResolvedPromiseResult(promises) {
-  return Promise.any(promises)
+  return Promise.any(promises);
 }
 
 /**
@@ -83,7 +83,7 @@ function getFirstResolvedPromiseResult(promises) {
  * [promise3, promise4, promise6] => Promise rejected with 6
  */
 function getFirstPromiseResult(promises) {
-  return Promise.race(promises)
+  return Promise.race(promises);
 }
 
 /**
@@ -138,7 +138,7 @@ function getAllResult(promises) {
  * [promise1, promise4, promise3] => Promise.resolved('104030')
  * [promise1, promise4, promise3, promise2] => Promise.resolved('10403020')
  */
-function queuPromises(promises ) {
+function queuPromises(promises) {
   return promises.reduce((accumulator, currentPromise) => {
     return accumulator.then((result) => {
       return currentPromise.then((value) => result + value.toString());
